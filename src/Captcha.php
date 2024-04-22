@@ -264,17 +264,17 @@ class Captcha
         $generator = $this->generate();
         $this->text = $generator['value'];
 
-        $this->canvas = $this->imageManager->canvas(
+        $this->imageManager->
+        $this->canvas = $this->imageManager->create(
             $this->width,
-            $this->height,
-            $this->bgColor
-        );
+            $this->height
+        )->fill($this->bgColor);
 
         if ($this->bgImage) {
-            $this->image = $this->imageManager->make($this->background())->resize(
+            $this->image = $this->imageManager->create(
                 $this->width,
                 $this->height
-            );
+            )->fill($this->background());
             $this->canvas->insert($this->image);
         } else {
             $this->image = $this->canvas;
